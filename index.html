@@ -4,7 +4,77 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href='style.css' />
-  <script src="src/index.js"></script>
+  <script src="src/index.js">
+    const init = () => {};
+    document.addEventListner("DOMContainerLoaded", init);
+    const inputForm = document.querySelector("Form");
+    inputForm.addEventListner("submit", (event) => {});
+
+    const init = () => {
+      const inputForm = document.querySelector("form");
+
+      inputForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+      });
+
+      inputForm.addEventListner("submit", (event) => {
+        event.preventDefault();
+        console.log(event);
+      });
+
+      event.target;
+      // => <form>..</form>
+
+      event.target.children;
+      // => HTMLCollection(3) [label, input#serachByID, input, serachByID: input#searchByID]
+
+      <form>
+        <label for="searchByID">Search By ID</label>
+        <input id="searchByID" type="text" placeholder="Enter ID here"/>
+        <input type="submit" />
+        </form>
+
+        event.target.children[1];
+        // => <input id="searchByID" type="text" placeholder= "Enter ID here">
+
+        event.target.children[1].value;
+        // => whatever you typed into the input
+
+        inputForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const input = document.querySelector("input#searchByID");
+
+          console.log(input.value);
+        });
+
+
+        const init = () => {
+          const inputForm = document.querySelector("form");
+
+          inputForm.addEventListener("submit", (event) => {
+            event .preventDefault();
+            const input = document.querySelector("input#searchByID");
+
+            consloe.kog(input.value);
+
+            fetch("http:localhost:3000/movies")
+            .then((response) => response.json())
+            .then((data) => {
+              consloe.log(data);
+              //LOG: (3) [{...}, {...}, {...}]
+            });
+          });
+
+          document.addEventListener("DOMContentLoaded", init);
+        }
+      
+    };
+
+    document.addEventListner("DOMContentLoaded", init);
+
+    
+    
+  </script>
   <title>KidsMDb</title>
 </head>
 <body>
